@@ -5,7 +5,7 @@ var gambar = {
 	logo:"logo.png",
 	latar:"latar.jpg",
 	startBtn:"tombolStart.png",
-	cover:"cover.jpg",
+	cover:"cover2.jpg",
 	playBtn:"btn-play.png",
 	maxBtn:"maxBtn.png",
 	minBtn:"minBtn.png"	,
@@ -32,7 +32,7 @@ var gambar = {
 }
 //file suara yang dipakai dalam game
 var suara = {
-	suaraUtama:'sound.mp3',
+	suaraUtama:'sounds.mp3',
 	dead:'dead.mp3',
 	jump:"jump.wav",
 	coin:"coin.wav",
@@ -45,13 +45,13 @@ loading(gambar, suara, 	halamanCover);
 
 
 function halamanCover(){
-	this.stop
+	
 	hapusLayar('#fffff');
 	gambarFull(dataGambar.cover);
 	musik(dataSuara.suaraUtama)
 	var playBtn = tombol(dataGambar.playBtn, 1100, 500);
-	if (tekan(playBtn)){
-		
+	if (tekan(playBtn)){	
+		game.musik.play();
 		setAwal();
 		jalankan(gameLoop);
 	}	
@@ -90,8 +90,12 @@ function ulangiPermainan(){
 	game.aktif= true;
 	game. score= 0;
 	setAwal();
-	jalankan(gameLoop);
-	
+	jalankan(gameLoop);	
+	setTimeout(playm,1000)
+}
+
+function playm(){
+	game.musik.play();
 }
 
 function gameLoop(){
@@ -115,6 +119,17 @@ function gameLoop(){
 	buatLevel();
 	cekItem();
 	teks(game.score, 40, 60);
+	game.score.style
+}
+
+
+function menang(){
+	swal({
+		title: "Winner",
+		text:'Scor ' + game.hiScore,
+		timer: 3000,
+		buttons: false,
+	  });
 }
 
 function cekItem(){
@@ -124,19 +139,22 @@ function cekItem(){
 		game.itemID = 0;
 		
 		
+		
 
 	}
 	if (game.musuhID != 0){
 		tambahScore(25);
 		game.musuhID = 0;
 		
+
 		
 	}
 	if (game.triggerID == 1){
 		game.triggerID = 0;
 		game.aktif = false;
 		game.level++;
-		
+		game.musik.stop();
+		setTimeout(menang,2000)
 		mainkanSuara(dataSuara.win)
 		setTimeout(ulangiPermainan, 5000)
 	}

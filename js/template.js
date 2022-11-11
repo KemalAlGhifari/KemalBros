@@ -43,7 +43,8 @@ function loading(img, snd, func){
         siapkanSuara(snd, function(sound){
             dataSuara = sound;
             console.log("sfx loaded");
-            jalankan(func);
+            
+            jalankanload(func);
         });
     });
 }
@@ -86,7 +87,7 @@ function siapkanSuara(sources, callback)
         for (var src in sources) {
             sound[src] = game.folder+"/"+sources[src];
             hapusLayar();
-            teks("loading sound", canvas.width/2, canvas.height/2-20);
+            teks("loading sound", canvas.width/2.4, canvas.height/2-20);
             var persen = loadedSound/numSound*300; //300 = panjang preloader
             kotakr(canvas.width/2-150, canvas.height/2-10, persen, 15, 4, 2, "white", "white");
             kotakr(canvas.width/2-150, canvas.height/2-10, 300, 15, 4, 2, "white", "none");
@@ -121,7 +122,7 @@ function siapkanGambar(sources, callback)
         images[src].onload = function() {
             //tampilkan preloading baris
             hapusLayar();
-            teks("loading graphic", canvas.width/2, canvas.height/2-20);
+            teks("loading graphic", canvas.width/2.4, canvas.height/2-20);
             var persen = loadedImages/numImages*300; //300 = panjang preloader
             kotakr(canvas.width/2-150, canvas.height/2-10, persen, 15, 4, 2, "white", "white");
             kotakr(canvas.width/2-150, canvas.height/2-10, 300, 15, 4, 2, "white", "none");
@@ -358,7 +359,7 @@ function setGame(res = ""){
     game.oriH = screenH;
     game.areaW = gameArea.width;
     game.areaH = gameArea.height;
-    game.font = "Calibri-normal-20pt-left-hitam-normal-1.6";		
+    game.font = "VT323-normal-25pt-left-hitam-normal-1.6";		
     game.smoothing = false;
     game.pause = false;
     game.folder = "assets";
@@ -374,7 +375,7 @@ function setGame(res = ""){
     game.mouse = {x:0, y:0};
     game.score = 0;
     game.hiScore = 0;
-    game.fps = 30;
+    game.fps = 60;
     game.timer = 0;
     game.level = 1;
     game.skalaSprite = 1;
@@ -543,6 +544,17 @@ function jalankan(func){
     fpsInterval = 900 / game.fps;
     cancelAnimationFrame(game.loop);
     setTimeout(rafLoops, 100);
+}
+function jalankanload(func){
+    /*movingOb = {};
+    clearInterval(game.loop);
+    var speed = 900/game.fps;
+    game.loop = setInterval(func, speed);
+    */
+    loopFunc = func;
+    fpsInterval = 900 / game.fps;
+    cancelAnimationFrame(game.loop);
+    setTimeout(rafLoops, 1000);
 }
 
 function rafLoops(){		
@@ -1136,7 +1148,7 @@ function closeFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.webkitExitFullscreen) { /* Safari */
-    document.webkitExitFullscreen();
+    document.webkitExitFullscreen();getElementById
   } else if (document.msExitFullscreen) { /* IE11 */
     document.msExitFullscreen();
   }
@@ -1438,7 +1450,7 @@ function setPlatform(map, img, tileW, hero){
     game.tileset = img;
     game.tileW = tileW;
     game.tile_num = Math.floor(game.tilesetSize/game.tileW);
-    game.charX = 1;
+    game.charX = 10;
     game.charY = 5;
     game.screenW = Math.floor(game.lebar/(game.tileW*game.skalaSprite))+2;
     game.screenH = Math.floor(game.tinggi/(game.tileW*game.skalaSprite))+2;
@@ -1637,6 +1649,7 @@ function jalankanFungsi(func){
 }
 function onk(){
     game.deadAnim = true;
+    
 }
 
 function heroDead(){
@@ -1648,7 +1661,7 @@ function heroDead(){
     }
     mainkanSuara(dataSuara.dead)
     setTimeout(onk,1200)
-    
+    game.musik.stop();
     game.lompatY = -10;
 }
 
@@ -1841,8 +1854,8 @@ function gerakMusuh(){
                     game.musuhID = musuh.eTipe;
                     mainkanSuara(dataSuara.injek)
                 }else{
-                    
                    heroDead()
+                   
                 }
             }
         }

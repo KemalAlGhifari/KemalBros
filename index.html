@@ -10,14 +10,46 @@ canvas{ padding: 0; margin: auto; display: block; width:100%;}
 #game {margin:50px;}
 	</style>
  	<script type="text/javascript" src="js/template.js"></script>       
+	 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	 <!-- Font -->
+	 <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<style>
+		.swal-modal {
+			border: 3px solid white;
+		  }
+		  .swal-overlay {
+			background-color: rgba(0, 0, 0, 0.45);
+		  }
+		  .swal-title {
+			font-family: 'Kanit', sans-serif;
+			font-weight: bold;
+			font-size: 3rem;
+			position: relative;
+			color: black;
+			position: relative;
+			bottom: 2rem;
+		  }
+		  .swal-text{
+			font-size: 25px;
+		  }
+		  
+	</style>
 </head>
 <body>
 <div id="game">
-	<div style="margin-left: 10%;" id="gameArea"><canvas id="canvas"></canvas></div>
+	<div style="margin-left:7%;" id="gameArea"><canvas id="canvas"></canvas></div>
+
 </div>
 </body>
 <script type="text/javascript" src="js/game.js"></script> 
-<script type="text/javascript" src="js/map_1.js"></script>
-<script type="text/javascript" src="js/map_2.js"></script>
+<script type="text/javascript" src="map/map_1.js"></script>
+<script type="text/javascript" src="map/map_2.js"></script>
+<script>
 
+</script>
 </html>
