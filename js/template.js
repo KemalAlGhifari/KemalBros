@@ -1028,7 +1028,7 @@ function latar(img, sx=0, sy=0){
 
 function tambahScore(nl){
     game.score+=nl;
-    if (game.score>game.hiScore) game.hiScore = game. score;
+    if (game.score>game.hiScore) game.hiScore = game.score;
 }
 
 

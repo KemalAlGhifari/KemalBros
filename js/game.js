@@ -5,7 +5,7 @@ var gambar = {
 	logo:"logo.png",
 	latar:"latar.jpg",
 	startBtn:"tombolStart.png",
-	cover:"cover2.jpg",
+	cover:"latarKemal.jpg",
 	playBtn:"btn-play.png",
 	maxBtn:"maxBtn.png",
 	minBtn:"minBtn.png"	,
@@ -32,7 +32,7 @@ var gambar = {
 }
 //file suara yang dipakai dalam game
 var suara = {
-	suaraUtama:'sounds.mp3',
+	suaraUtama:'sound.mp3',
 	dead:'dead.mp3',
 	jump:"jump.wav",
 	coin:"coin.wav",
@@ -49,7 +49,7 @@ function halamanCover(){
 	hapusLayar('#fffff');
 	gambarFull(dataGambar.cover);
 	musik(dataSuara.suaraUtama)
-	var playBtn = tombol(dataGambar.playBtn, 1100, 500);
+	var playBtn = tombol(dataGambar.playBtn, 600, 460);
 	if (tekan(playBtn)){	
 		game.musik.play();
 		setAwal();
@@ -101,7 +101,7 @@ function playm(){
 function gameLoop(){
 	hapusLayar();	
 	if(game.kanan){
-		gerakLevel(game.hero, 4, 0);
+		gerakLevel(game.hero, 3, 0);
 	}else if(game.kiri){
 		gerakLevel(game.hero, -3, 0);
 	}else if(game.a){
@@ -124,11 +124,16 @@ function gameLoop(){
 
 
 function menang(){
-	swal({
-		title: "Winner",
-		text:'Scor ' + game.hiScore,
+	swal.fire({
+		title:game.score,
 		timer: 3000,
 		buttons: false,
+		target: '#gameArea	',
+		showCancelButton: false, // There won't be any cancel button
+showConfirmButton: false, // There won't be any confirm button
+		customClass: {                      // <------ customClass is an object!
+	  container: 'position-absolute'
+	},
 	  });
 }
 

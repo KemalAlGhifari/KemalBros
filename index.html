@@ -10,33 +10,51 @@ canvas{ padding: 0; margin: auto; display: block; width:100%;}
 #game {margin:50px;}
 	</style>
  	<script type="text/javascript" src="js/template.js"></script>       
-	 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	 <!-- Font -->
 	 <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	<style>
-		.swal-modal {
+		.swal2-modal {
 			border: 3px solid white;
+			background: url(assets/papanscore.png);
+			background-size: cover;
+			
+			border: none;
+			width: 50%;
+			height: 56%;
+
 		  }
-		  .swal-overlay {
+		  .swal2-overlay {
 			background-color: rgba(0, 0, 0, 0.45);
 		  }
-		  .swal-title {
-			font-family: 'Kanit', sans-serif;
-			font-weight: bold;
-			font-size: 3rem;
+		  
+		  
+		  .swal2-title{
+			font-size: 70px;
+			font-style: normal;
+			font-weight: normal;
 			position: relative;
-			color: black;
-			position: relative;
-			bottom: 2rem;
+			top: 20%;
+			left: 10%;
+			font-family: VT323;
+			color: white;
 		  }
-		  .swal-text{
-			font-size: 25px;
-		  }
+		  
+		  .position-absolute {
+            position: absolute !important;
+			
+          }
+		  #custom-target {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border-style: solid;
+          }
 		  
 	</style>
 </head>
@@ -45,11 +63,17 @@ canvas{ padding: 0; margin: auto; display: block; width:100%;}
 	<div style="margin-left:7%;" id="gameArea"><canvas id="canvas"></canvas></div>
 
 </div>
+
+
+
 </body>
 <script type="text/javascript" src="js/game.js"></script> 
 <script type="text/javascript" src="map/map_1.js"></script>
 <script type="text/javascript" src="map/map_2.js"></script>
+<script type="text/javascript" src="map/map_3.js"></script>
 <script>
-
+	function swa(){
+		
+	}
 </script>
 </html>
