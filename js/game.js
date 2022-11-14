@@ -25,6 +25,7 @@ var gambar = {
 	musuh2Run:"enemy2Run.png",
 	musuh2Hit:"enemy2Hit.png",	
 	bendera:"flag.png",
+	cooming:'cooming.jpg'
 	
 	
 	
@@ -37,7 +38,8 @@ var suara = {
 	jump:"jump.wav",
 	coin:"coin.wav",
 	injek:'injek.wav',
-	win:"win.wav"
+	win:"win.wav",
+	endsound:'endsound.mp3'
 }
 
 //load gambar dan suara lalu jalankan startScreen
@@ -45,7 +47,6 @@ loading(gambar, suara, 	halamanCover);
 
 
 function halamanCover(){
-	
 	hapusLayar('#fffff');
 	gambarFull(dataGambar.cover);
 	musik(dataSuara.suaraUtama)
@@ -82,6 +83,7 @@ function setAwal(){
 	setPlatformEnemy(1, musuh1);
 	setPlatformEnemy2(2, musuh2);
 	setPlatformTrigger(1, dataGambar.bendera);
+	setPlatformTrigger(2, dataGambar.bendera);
 
 	
 }
@@ -129,12 +131,48 @@ function menang(){
 		timer: 3000,
 		buttons: false,
 		target: '#gameArea	',
-		showCancelButton: false, // There won't be any cancel button
-showConfirmButton: false, // There won't be any confirm button
-		customClass: {                      // <------ customClass is an object!
+		showCancelButton: false,
+showConfirmButton: false, 
+		customClass: {                      
 	  container: 'position-absolute'
 	},
 	  });
+}
+
+function myfunction(){
+	location.reload()
+}
+
+
+function lud(){
+	jalankanload(refres)
+	setTimeout(relud,10000)
+}
+
+function relud(){
+	location.reload()
+}
+function menang2(){
+	swal.fire({
+		title:game.score,
+		timer: 3000,
+		buttons: false,
+		target: '#gameArea	',
+		showCancelButton: false,
+		showConfirmButton: false, 
+		className:'modals'
+	  
+	  })
+	  setTimeout(lud,5000)}
+
+
+function hapusls(){
+	hapusLayar('#fffff');
+	comings()
+}
+
+function comings(){
+	latar(dataGambar.cooming)
 }
 
 function cekItem(){
@@ -163,6 +201,20 @@ function cekItem(){
 		mainkanSuara(dataSuara.win)
 		setTimeout(ulangiPermainan, 5000)
 	}
+	if(game.triggerID == 2){
+		game.triggerID = 0;
+		game.aktif = false;
+		game.musik.stop();
+		mainkanSuara(dataSuara.win)
+		setTimeout(menang2,2000)
+		
+	}
 
+}
+
+function refres(){
+	hapusLayar('#fffff');
+	gambarFull(dataGambar.cooming);
+	game.musik.play();
 }
 	

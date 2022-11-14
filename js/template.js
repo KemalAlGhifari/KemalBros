@@ -985,6 +985,14 @@ function musik(snd, vol=500){
         game.musik.volume(vol/100);
     }
 }
+function musik2(snd, vol=500){		
+    if (!game.musikAktif){
+        game.musikAktif = true;
+        game.musik = new Sound(snd);
+        game.musik.loop();
+        game.musik.volume(vol/100);
+    }
+}
 
 function acak(num){
     return Math.floor(Math.random()*num);
